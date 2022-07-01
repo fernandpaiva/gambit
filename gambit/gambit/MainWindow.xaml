@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:gambit"
         mc:Ignorable="d"
         Title="Gambit" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Label 
@@ -124,45 +123,18 @@
             Content="Gerar Arquivo TXT" 
             HorizontalAlignment="Left" 
             Height="33" 
-            Margin="631,369,0,0" 
+            Margin="668,376,0,0" 
             VerticalAlignment="Top" Width="110"
             />
-        <Label 
-            Content="Tag :" 
-            HorizontalAlignment="Left" 
-            Margin="229,191,0,0" 
-            VerticalAlignment="Top" Height="26" Width="34"
-        />
-        <TextBox x:Name="tag" 
-            HorizontalAlignment="Left" 
-            Margin="262,191,0,0" 
-            TextWrapping="Wrap" 
-            Text="" 
-            VerticalAlignment="Top" 
-            Width="83" 
-            Height="26"
-        />
-        <Button 
-            Content="Adicionar" 
-            HorizontalAlignment="Left" 
-            Margin="276,225,0,0" 
-            VerticalAlignment="Top" Height="20" Width="54"
-        />
-        <StackPanel x:Name="rectag" 
-            Margin="362,191,0,0" 
-            Height="139" 
-            VerticalAlignment="Top" 
-            HorizontalAlignment="Left" 
-            Width="135"/>
-        <Border x:Name="borda" 
-            BorderBrush="Black" 
-            BorderThickness="1" 
-            HorizontalAlignment="Left" 
-            Height="139" 
-            Margin="357,191,0,0" 
-            VerticalAlignment="Top" 
-            Width="151"
-        />
+        <StackPanel HorizontalAlignment="Center" Width="196" Margin="0,160,0,94">
+            <TextBox x:Name="txttag" />
+            <Button x:Name="addtag" Margin="0,5,0,0" Click="ButtonAddName_Click">Adicionar Tag</Button>
+        </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="194" Margin="0,152,0,0" VerticalAlignment="Top" Width="221"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="100" Margin="0,211,0,0" VerticalAlignment="Top" Width="196"/>
+
+
+
 
 
 

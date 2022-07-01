@@ -20,9 +20,9 @@ namespace gambit
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private void ButtonAddName_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            
         }
     }
 }
