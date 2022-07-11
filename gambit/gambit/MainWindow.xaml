@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Gambit" Height="450" Width="800">
     <Grid Margin="0,0,0,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -14,124 +19,173 @@
         <Label 
             Content="Código : " 
             HorizontalAlignment="Left" 
-            Margin="65,48,0,0" 
+            Margin="52,76,0,0" 
             VerticalAlignment="Top" 
             Width="55" 
-            Height="26"
+            Height="26" 
+            Grid.Row="2"
         />
         <TextBox x:Name="codigo" 
             HorizontalAlignment="Left" 
-            Margin="120,48,0,0" 
+            Margin="120,76,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
             Width="61" 
-            Height="26"
+            Height="26" 
+            Grid.Row="2"
         />
         <Label 
             Content="Modelo :" 
             HorizontalAlignment="Left" 
-            Margin="60,93,0,0" 
+            Margin="55,147,0,0" 
             VerticalAlignment="Top" 
             Width="60" 
-            Height="26"
+            Height="26" 
+            Grid.Row="2"
         />
         <TextBox x:Name="modelo" 
             HorizontalAlignment="Left" 
-            Margin="120,93,0,0" 
+            Margin="120,147,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
             Width="61" 
-            Height="26"
+            Height="26" 
+            Grid.Row="2"
         />
         <RadioButton 
             Content="Etiqueta Cartão" 
             HorizontalAlignment="Left" 
-            Margin="244,59,0,0" 
+            Margin="62,295,0,0" 
             VerticalAlignment="Top" 
             Height="15" 
-            Width="101"
+            Width="104" 
+            Grid.Row="2"
         />
         <RadioButton 
             Content="Etiqueta Adesiva" 
             HorizontalAlignment="Left" 
-            Margin="244,91,0,0" 
-            VerticalAlignment="Top" 
+            Margin="62,315,0,0" 
+            Width="107" 
+            Grid.Row="2" 
             Height="15" 
-            Width="107"
+            VerticalAlignment="Top"
         />
         <Label 
-               Content="Largura :" 
-               HorizontalAlignment="Left" 
-               Margin="60,139,0,0" 
-               VerticalAlignment="Top" 
-               Width="55" 
-               Height="26"
+             Content="Largura :" 
+             HorizontalAlignment="Left" 
+             Margin="56,111,0,0" 
+             VerticalAlignment="Top" 
+             Width="56" 
+             Height="26" 
+            Grid.Row="2"
         />
         <Label 
             Content="Altura :" 
             HorizontalAlignment="Left" 
-            Margin="64,185,0,0" 
-            VerticalAlignment="Top" 
+            Margin="64,179,0,0" 
+            Width="48" Grid.Row="2" 
             Height="26" 
-            Width="48"
+            VerticalAlignment="Top"
         />
         <TextBox x:Name="largura" 
             HorizontalAlignment="Left" 
-            Margin="120,139,0,0" 
+            Margin="120,111,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
             Width="61" 
-            Height="26"
+            Height="26" Grid.Row="2"
         />
         <TextBox x:Name="altura" 
             HorizontalAlignment="Left" 
-            Margin="120,185,0,0" 
+            Margin="120,179,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
             Width="61" 
-            Height="26"
+            Height="26" 
+            Grid.Row="2"
         />
         <GroupBox 
             Header="Descrição" 
-            Margin="229,34,0,0" 
+            Margin="50,265,0,0" 
             Height="89" 
             VerticalAlignment="Top" 
             HorizontalAlignment="Left" 
-            Width="131"
+            Width="131" 
+            Grid.Row="2"
         />
         <Label 
             Content="Gap :" 
             HorizontalAlignment="Left" 
-            Margin="65,232,0,0" 
-            VerticalAlignment="Top" 
-            Width="47" Height="26"
+            Margin="67,212,0,0" 
+            Width="48" Grid.Row="2" 
+            Height="26" 
+            VerticalAlignment="Top"
         />
         <TextBox x:Name="gap" 
             TextWrapping="Wrap" 
             Text=""
-            Margin="120,232,0,0" 
+            Margin="120,212,0,0" 
             Height="26" 
             VerticalAlignment="Top" 
             HorizontalAlignment="Left" 
-            Width="61"
+            Width="61" 
+            Grid.Row="2"
         />
         <Button 
             Content="Gerar Arquivo TXT" 
-            HorizontalAlignment="Left" 
+            HorizontalAlignment="Right" 
             Height="33" 
-            Margin="668,376,0,0" 
-            VerticalAlignment="Top" Width="110"
-            />
-        <StackPanel HorizontalAlignment="Center" Width="196" Margin="0,160,0,94">
-            <TextBox x:Name="txttag" />
-            <Button x:Name="addtag" Margin="0,5,0,0" Click="ButtonAddName_Click">Adicionar Tag</Button>
+            Margin="0,0,22,31" 
+            VerticalAlignment="Bottom" 
+            Width="110" 
+            Grid.Row="2"
+         />
+        <StackPanel 
+            HorizontalAlignment="Center" 
+            Width="196" 
+            Margin="0,90,0,170" 
+            Grid.Row="2">
+            <TextBox 
+             x:Name="txttag" 
+             Height="19" 
+             RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Button 
+                x:Name="addtag" 
+                Click="ButtonAddName_Click" 
+                Content="Adicionar Tag"
+                />
         </StackPanel>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="194" Margin="0,152,0,0" VerticalAlignment="Top" Width="221"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="100" Margin="0,211,0,0" VerticalAlignment="Top" Width="196"/>
+        <Border 
+            BorderBrush="Black" 
+            BorderThickness="1" 
+            HorizontalAlignment="Center" 
+            Margin="0,76,0,0" Width="220" 
+            Height="194" VerticalAlignment="Top" 
+            Grid.Row="2"
+            />
+        <Border 
+            BorderBrush="Black" 
+            BorderThickness="1" 
+            HorizontalAlignment="Center" 
+            Height="120" 
+            VerticalAlignment="Top" 
+            Width="196" 
+            Grid.Row="2" 
+            Margin="0,132,0,0"
+            />
 
 
 
