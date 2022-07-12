@@ -22,7 +22,11 @@ namespace gambit
     {
         private void ButtonAddName_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (!string.IsNullOrWhiteSpace(txttag.Text) && !lsttag.Items.Contains(txttag.Text))
+            {
+                lsttag.Items.Add(txttag.Text);
+                txttag.Clear();
+            }
         }
     }
 }
