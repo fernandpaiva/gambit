@@ -9,7 +9,7 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid Margin="0,0,0,-6">
+    <Grid HorizontalAlignment="Center" Width="800" Height="440" VerticalAlignment="Top">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0*" />
@@ -66,7 +66,8 @@
             Margin="62,295,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Etiqueta Cartão" />
+            Content="Etiqueta Cartão"
+            TabIndex="5" />
         <RadioButton
             x:Name="rdbEtiqueta_Adesiva"
             Grid.Row="2"
@@ -75,7 +76,8 @@
             Margin="62,315,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Etiqueta Adesiva" />
+            Content="Etiqueta Adesiva"
+            TabIndex="6" />
         <Label
             Grid.Row="2"
             Width="56"
@@ -131,7 +133,7 @@
             VerticalAlignment="Top"
             Content="Gap :" />
         <TextBox
-            x:Name="gap"
+            x:Name="txtgap"
             Grid.Row="2"
             Width="61"
             Height="26"
@@ -143,17 +145,18 @@
             TextWrapping="Wrap" />
         <Button
             Grid.Row="2"
-            Width="110"
+            Width="109"
             Height="33"
-            Margin="0,0,22,31"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
+            Margin="664,376,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Click="btnSalvarArquivo_Click"
-            Content="Gerar Arquivo TXT" />
+            Content="Gerar Arquivo TXT"
+            TabIndex="11" />
         <ListBox
             x:Name="lsttag"
             Grid.RowSpan="3"
-            Width="144"
+            Width="143"
             Height="118"
             Margin="239,192,0,0"
             HorizontalAlignment="Left"
@@ -167,6 +170,7 @@
             Margin="248,111,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            TabIndex="7"
             Text=""
             TextWrapping="Wrap" />
         <Button
@@ -177,7 +181,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="ButtonAddName_Click"
-            Content="Adicionar" />
+            Content="Adicionar"
+            TabIndex="8" />
         <Label
             Grid.RowSpan="3"
             Width="58"
@@ -188,12 +193,12 @@
             Content="TAGS" />
         <Label
             Grid.RowSpan="3"
-            Width="117"
+            Width="95"
             Height="27"
-            Margin="458,124,0,0"
+            Margin="480,124,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Nome do Arquivo :" />
+            Content="Nome da Loja :" />
         <TextBox
             x:Name="txtarquivo"
             Grid.RowSpan="3"
@@ -202,6 +207,7 @@
             Margin="574,124,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            TabIndex="10"
             Text=""
             TextWrapping="Wrap" />
         <Label
@@ -220,6 +226,7 @@
             Margin="574,76,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            TabIndex="9"
             Text=""
             TextWrapping="Wrap" />
         <Label
@@ -227,13 +234,31 @@
             Grid.RowSpan="3"
             Width="248"
             Height="40"
-            Margin="72,367,0,0"
+            Margin="50,368,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content=""
             FontSize="18"
             FontWeight="ExtraBold"
             Foreground="Green" />
+        <Label
+            Grid.RowSpan="3"
+            Width="122"
+            Margin="540,375,0,0"
+            HorizontalAlignment="Left"
+            Content="GAMBIT 1.0"
+            FontSize="10"
+            FontWeight="ExtraBold"
+            Foreground="Blue" RenderTransformOrigin="0.5,0.5" Height="34" VerticalAlignment="Top" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.005"/>
+                    <RotateTransform Angle="0.241"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
 
 
