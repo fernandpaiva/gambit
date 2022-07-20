@@ -19,7 +19,7 @@ namespace gambit
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class frmGambit : Window
     {
 
         private void ButtonAddName_Click(object sender, RoutedEventArgs e)
@@ -27,11 +27,17 @@ namespace gambit
             if (!string.IsNullOrWhiteSpace(txttag.Text) && !lsttag.Items.Contains(txttag.Text))
             {
                 lsttag.Items.Add(txttag.Text.ToUpper());
+                
+                frmEixo frmEixo = new frmEixo();
+                frmEixo.Owner = this;
+                frmEixo.ShowDialog();
+
+
                 txttag.Clear();
             }
         }
 
-        private void btnSalvarArquivo_Click(object sender, RoutedEventArgs e)
+        public void btnSalvarArquivo_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarCampos())
             {
@@ -46,7 +52,7 @@ namespace gambit
                 lblStatus.Content = "Erro ao salvar!";
         }
 
-        private bool SalvarArquivo()
+        public bool SalvarArquivo()
         {
             string descricao;
             if (rdbEtiqueta_Adesiva.IsChecked.HasValue)
@@ -71,7 +77,7 @@ namespace gambit
                     {
 
                         if (item.ToString()?.ToUpper() == "BARRA")
-                            streamWriter.WriteLine($"BAjusteX(0),AjusteY(0),0,E30,2,2,64,B,\"<{item.ToString()?.ToUpper()}>\"");
+                            streamWriter.WriteLine($"BAjusteX({_eixo.}),AjusteY(0),0,E30,2,2,64,B,\"<{item.ToString()?.ToUpper()}>\"");
                         else
                             streamWriter.WriteLine($"AAjusteX(0),AjusteY(0),0,1,1,2,N,\"<{item.ToString()?.ToUpper()}>\"");
                     }
@@ -105,6 +111,9 @@ namespace gambit
             {
                 return false;
             }
+
+            
+            
 
         }
     }
