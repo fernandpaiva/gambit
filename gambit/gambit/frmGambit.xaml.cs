@@ -21,16 +21,18 @@ namespace gambit
     /// </summary>
     public partial class frmGambit : Window
     {
-
+        frmEixo frmEixo = new frmEixo();
         private void ButtonAddName_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txttag.Text) && !lsttag.Items.Contains(txttag.Text))
             {
                 lsttag.Items.Add(txttag.Text.ToUpper());
-                
-                frmEixo frmEixo = new frmEixo();
+
+               
                 frmEixo.Owner = this;
                 frmEixo.ShowDialog();
+
+                var param = frmEixo.Parametros;
 
 
                 txttag.Clear();
@@ -44,12 +46,12 @@ namespace gambit
                 return;
             }
                             
-
             lblStatus.Content = null;
             if (SalvarArquivo())
                 lblStatus.Content = "Salvo com sucesso!";
             else
                 lblStatus.Content = "Erro ao salvar!";
+                
         }
 
         public bool SalvarArquivo()
@@ -77,9 +79,9 @@ namespace gambit
                     {
 
                         if (item.ToString()?.ToUpper() == "BARRA")
-                            streamWriter.WriteLine($"BAjusteX({_eixo.}),AjusteY(0),0,E30,2,2,64,B,\"<{item.ToString()?.ToUpper()}>\"");
+                            streamWriter.WriteLine($"BAjusteX({frmEixo.txteixoy.Text}),AjusteY({frmEixo.txteixoy.Text}),0,E30,{frmEixo.txtmultVertical.Text},{frmEixo.txtmultHorizontal.Text},64,B,\"<{item.ToString()?.ToUpper()}>\"");
                         else
-                            streamWriter.WriteLine($"AAjusteX(0),AjusteY(0),0,1,1,2,N,\"<{item.ToString()?.ToUpper()}>\"");
+                            streamWriter.WriteLine($"AAjusteX({frmEixo.txteixoy.Text}),AjusteY({frmEixo.txteixoy.Text}),0,{frmEixo.txtfonte.Text},{frmEixo.txtmultVertical.Text},{frmEixo.txtmultHorizontal.Text},N,\"<{item.ToString()?.ToUpper()}>\"");
                     }
                 }
 
@@ -105,6 +107,7 @@ namespace gambit
             {
                 lblStatus.Content = null;
                 lblStatus.Content = "Campo não pode ser vazio";
+                lblStatus.Foreground = Brushes.Red;
                 return true;
             }
             else

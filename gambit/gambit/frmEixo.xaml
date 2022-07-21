@@ -6,48 +6,103 @@
     xmlns:local="clr-namespace:gambit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Eixo Y | Eixo X"
-    Width="520"
-    Height="151"
+    Width="689"
+    Height="217"
     mc:Ignorable="d">
-    <Grid Margin="0,0,0,5">
+    <Grid Margin="0,0,0,-6">
         <Label
             Width="60"
             Height="30"
-            Margin="69,0,0,0"
+            Margin="41,47,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
             Content="EIXO Y :" />
         <TextBox
             x:Name="txteixoy"
             Width="92"
             Height="30"
-            Margin="134,0,0,0"
+            Margin="106,47,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            TextChanged="TextBox_TextChanged"
+            VerticalAlignment="Top"
+            TabIndex="1"
             TextWrapping="Wrap" />
         <Label
             Width="58"
             Height="30"
-            Margin="260,0,0,0"
+            Margin="239,44,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
             Content="EIXO X :" />
         <TextBox
             x:Name="txteixox"
             Width="96"
             Height="30"
-            Margin="323,0,0,0"
+            Margin="302,44,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
+            TabIndex="2"
             TextWrapping="Wrap" />
         <Button
             x:Name="btnSalvar"
-            Margin="447,103,0,0"
+            Width="54"
+            Height="24"
+            Margin="560,112,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="btnSalvar_Click"
-            Content="Button" />
+            TabIndex="6"
+            Content="Salvar" />
+        <Label
+            x:Name="lblfonte"
+            Width="58"
+            Height="30"
+            Margin="435,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="FONTE :" />
+        <TextBox
+            x:Name="txtfonte"
+            Width="92"
+            Height="30"
+            Margin="498,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TabIndex="3"
+            TextWrapping="Wrap" />
+        <Label
+            Width="168"
+            Height="32"
+            Margin="41,96,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="MULTIPLICADOR VERTICAL :" />
+        <TextBox
+            x:Name="txtmultVertical"
+            Width="69"
+            Height="30"
+            Margin="209,96,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="4"
+            TextWrapping="Wrap" />
+        <Label
+            Width="153"
+            Height="32"
+            Margin="297,96,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="MULTIPLICADOR HORIZ. :" />
+        <TextBox
+            x:Name="txtmultHorizontal"
+            Width="75"
+            Height="32"
+            Margin="464,96,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TabIndex="5"
+            TextWrapping="Wrap" />
 
 
     </Grid>

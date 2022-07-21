@@ -8,8 +8,11 @@ namespace gambit.Models
 {
     class Eixo
     {
-        public decimal? EixoX { get; set; }
-        public decimal? EixoY { get; set; }
+        public decimal EixoX { get; set; }
+        public decimal EixoY { get; set; }
+        public decimal Fonte { get; set; }
+        public decimal multVertical { get; set; } 
+        public decimal multHorizontal { get; set; } 
         public Eixo()
         {
         }
