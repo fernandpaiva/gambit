@@ -265,6 +265,15 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Button
+            Grid.RowSpan="3"
+            Width="109"
+            Height="33"
+            Margin="664,322,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="bntLimparCampos_Click"
+            Content="Limpar Campos" />
 
 
 

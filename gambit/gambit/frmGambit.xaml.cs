@@ -114,10 +114,21 @@ namespace gambit
             {
                 return false;
             }
-
-            
-            
-
         }
+
+        private void bntLimparCampos_Click(object sender, EventArgs e)
+        {
+            txtCodigo.Text = "";
+            txtModelo.Text = "";
+            txtLargura.Text = "";
+            txtAltura.Text = "";
+            txtgap.Text = "";
+            //txtqtdeColunas = "";
+            txtarquivo.Text = "";
+            txtCodigo.Text = "";
+            lsttag.Items.Clear();
+           
+            }
+
     }
 }
