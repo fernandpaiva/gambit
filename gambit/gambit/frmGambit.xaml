@@ -39,6 +39,7 @@
             Margin="120,76,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            PreviewTextInput="ConsiderarNum"
             TabIndex="0"
             Text=""
             TextWrapping="Wrap" />
@@ -58,6 +59,7 @@
             Margin="120,111,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            PreviewTextInput="ConsiderarNum"
             TabIndex="1"
             Text=""
             TextWrapping="Wrap" />
@@ -105,6 +107,7 @@
             Margin="120,142,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            PreviewTextInput="ConsiderarNum"
             TabIndex="2"
             Text=""
             TextWrapping="Wrap" />
@@ -116,6 +119,7 @@
             Margin="121,179,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            PreviewTextInput="ConsiderarNum"
             TabIndex="3"
             Text=""
             TextWrapping="Wrap" />
@@ -143,14 +147,15 @@
             Margin="120,216,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            PreviewTextInput="ConsiderarNum"
             TabIndex="4"
             Text=""
             TextWrapping="Wrap" />
         <Button
             Grid.Row="2"
             Width="109"
-            Height="33"
-            Margin="664,376,0,0"
+            Height="21"
+            Margin="664,387,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="btnSalvarArquivo_Click"
@@ -224,6 +229,7 @@
         <TextBox
             x:Name="txtqtdeColunas"
             Grid.RowSpan="3"
+            PreviewTextInput="ConsiderarNum"
             Width="80"
             Height="26"
             Margin="574,76,0,0"
@@ -268,12 +274,22 @@
         <Button
             Grid.RowSpan="3"
             Width="109"
-            Height="33"
-            Margin="664,322,0,0"
+            Height="21"
+            Margin="664,353,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="bntLimparCampos_Click"
             Content="Limpar Campos" />
+        <ComboBox Grid.RowSpan="3" Margin="453,226,198,185" />
+        <Button
+            Grid.RowSpan="3"
+            Width="135"
+            Height="29"
+            Margin="622,226,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BtnImportar_Click"
+            Content="Importar Parâmetros" />
 
 
 

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using gambit.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace gambit
 {
@@ -21,7 +24,16 @@ namespace gambit
     /// </summary>
     public partial class frmGambit : Window
     {
-        frmEixo frmEixo = new frmEixo();
+        frmEixo frmEixo = new();
+        EtiquetaConfig etiquetaConfig = new();
+        private string nomeArquivo;
+
+
+        //public frmGambit()
+        //{
+        //    nomeArquivo = $"MODELO-{txtarquivo.Text}-{txtModelo.Text}";
+        //}
+
         private void ButtonAddName_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txttag.Text) && !lsttag.Items.Contains(txttag.Text))
@@ -29,8 +41,8 @@ namespace gambit
                 lsttag.Items.Add(txttag.Text.ToUpper());
 
                
-                frmEixo.Owner = this;
-                frmEixo.ShowDialog();
+                //frmEixo.Owner = this;
+                frmEixo.Show();
 
                 var param = frmEixo.Parametros;
 
@@ -41,6 +53,20 @@ namespace gambit
 
         public void btnSalvarArquivo_Click(object sender, RoutedEventArgs e)
         {
+            etiquetaConfig.Codigo = int.Parse(txtCodigo.Text);
+            etiquetaConfig.Modelo = int.Parse(txtModelo.Text); 
+            etiquetaConfig.Altura = int.Parse(txtAltura.Text);
+            etiquetaConfig.Largura = int.Parse(txtLargura.Text);
+            etiquetaConfig.Gap = int.Parse(txtgap.Text);
+            etiquetaConfig.Colunas = int.Parse(txtqtdeColunas.Text);
+            etiquetaConfig.Eixo.EixoX = int.Parse(frmEixo.txteixox.Text);
+            etiquetaConfig.Eixo.EixoY = int.Parse(frmEixo.txteixoy.Text);
+            etiquetaConfig.Eixo.Fonte = int.Parse(frmEixo.txtfonte.Text);
+            etiquetaConfig.Eixo.multVertical = int.Parse(frmEixo.txtmultVertical.Text);
+            etiquetaConfig.Eixo.multHorizontal = int.Parse(frmEixo.txtmultHorizontal.Text);
+
+
+
             if (ValidarCampos())
             {
                 return;
@@ -66,12 +92,12 @@ namespace gambit
 
             try
             {
-                using FileStream fileStream = new FileStream($"MODELO-{txtarquivo.Text}-{txtModelo.Text}.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                using FileStream fileStream = new FileStream($"{nomeArquivo}.txt", FileMode.OpenOrCreate, FileAccess.Write);
                 using StreamWriter streamWriter = new StreamWriter(fileStream);
 
-                streamWriter.WriteLine($"INSERT modeloetiqueta(CODIGO, MODELO, DESCRICAO, CUSTOMIZADA, ALTURA, LARGURA, DENSIDADE, VELOCIDADE, ETIQUETA, COLUNAS, GAP, TIPOETIQUETA) VALUES({txtCodigo.Text}, {txtModelo.Text}, N'ETIQUETA {descricao} - DIMENSOES {txtLargura.Text}x{txtAltura.Text}x{txtqtdeColunas.Text} - PADRAO', 1, {int.Parse(txtAltura.Text) * 8}, {int.Parse(txtLargura.Text) * 8 * int.Parse(txtqtdeColunas.Text)}, 10, 3, N'[CONFIGURACAO]");
+                streamWriter.WriteLine($"INSERT modeloetiqueta(CODIGO, MODELO, DESCRICAO, CUSTOMIZADA, ALTURA, LARGURA, DENSIDADE, VELOCIDADE, ETIQUETA, COLUNAS, GAP, TIPOETIQUETA) VALUES({etiquetaConfig.Codigo}, {txtModelo.Text}, N'ETIQUETA {descricao} - DIMENSOES {etiquetaConfig.Largura}x{etiquetaConfig.Altura}x{etiquetaConfig.Colunas} - PADRAO', 1, {etiquetaConfig.Altura * 8}, {etiquetaConfig.Largura * 8 * etiquetaConfig.Colunas} , 10, 3, N'[CONFIGURACAO]");
                 streamWriter.WriteLine("T30\nT16\nT16\nLPPLB\n[CABECALHO]\nN\nJB\nN\nO\nZB\nq<LARGURA>\nQ<ALTURA>\n<GAP>\nS<VELOCIDADE>\nD<DENSIDADE>\nN");
-                for (int i = 0; i < int.Parse(txtqtdeColunas.Text); i++)
+                for (int i = 0; i < (etiquetaConfig.Colunas); i++)
                 {
                     streamWriter.WriteLine($"[COLUNA{i + 1}]");
 
@@ -79,9 +105,9 @@ namespace gambit
                     {
 
                         if (item.ToString()?.ToUpper() == "BARRA")
-                            streamWriter.WriteLine($"BAjusteX({frmEixo.txteixoy.Text}),AjusteY({frmEixo.txteixoy.Text}),0,E30,{frmEixo.txtmultVertical.Text},{frmEixo.txtmultHorizontal.Text},64,B,\"<{item.ToString()?.ToUpper()}>\"");
+                            streamWriter.WriteLine($"BAjusteX({etiquetaConfig.Eixo.EixoX}),AjusteY({etiquetaConfig.Eixo.EixoY}),0,E30,{etiquetaConfig.Eixo.multVertical},{etiquetaConfig.Eixo.multHorizontal},64,B,\"<{item.ToString()?.ToUpper()}>\"");
                         else
-                            streamWriter.WriteLine($"AAjusteX({frmEixo.txteixoy.Text}),AjusteY({frmEixo.txteixoy.Text}),0,{frmEixo.txtfonte.Text},{frmEixo.txtmultVertical.Text},{frmEixo.txtmultHorizontal.Text},N,\"<{item.ToString()?.ToUpper()}>\"");
+                            streamWriter.WriteLine($"AAjusteX({etiquetaConfig.Eixo.EixoX}),AjusteY({etiquetaConfig.Eixo.EixoY}),0,{etiquetaConfig.Eixo.Fonte},{etiquetaConfig.Eixo.multVertical},{etiquetaConfig.Eixo.multHorizontal},N,\" <{item.ToString()?.ToUpper()}>\"");
                     }
                 }
 
@@ -96,7 +122,7 @@ namespace gambit
                 Console.WriteLine(e.StackTrace);
                 return false;
             }
-
+                 
             return true;
 
         }
@@ -123,12 +149,28 @@ namespace gambit
             txtLargura.Text = "";
             txtAltura.Text = "";
             txtgap.Text = "";
-            //txtqtdeColunas = "";
+            txtqtdeColunas.Text = "";
             txtarquivo.Text = "";
             txtCodigo.Text = "";
             lsttag.Items.Clear();
            
-            }
+        }
 
+        private void BtnImportar_Click(object sender, RoutedEventArgs e)
+        {
+            //var serializer = new XmlSerializer(typeof(EtiquetaConfig));
+            //using var streamWriter = new StreamWriter($"{nomeArquivo}.xml");
+            //serializer.Serialize(streamWriter, etiquetaConfig);
+
+            //var serializer = new XmlSerializer(typeof(EtiquetaConfig));
+            //using var streamReader = new StreamReader($"{nomeArquivo}.xml");
+            //etiquetaConfig = (EtiquetaConfig)serializer?.Deserialize(streamReader);
+        }
+
+        private void ConsiderarNum(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

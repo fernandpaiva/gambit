@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gambit.Models
 {
-    class Eixo
+    public class Eixo
     {
         public decimal EixoX { get; set; }
         public decimal EixoY { get; set; }
